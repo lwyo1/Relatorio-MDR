@@ -64,10 +64,12 @@ class Base:
     limitacoes: list[Limitacao] = field(default_factory=list)
     lacunas: list[Lacuna] = field(default_factory=list)
     acoes: list[Acao] = field(default_factory=list)
-    # Aba FASES: nome da fase -> período (item 1.5).
-    fases: dict[str, str] = field(default_factory=dict)
+    # Aba FASES: (programa, fase) -> período (item 1.5).
+    fases: dict[tuple[str, str], str] = field(default_factory=dict)
     # Aba TRAJETORIA: (programa, fase, função) -> classificação validada (item 8.1).
     trajetorias: dict[tuple[str, str, str], str] = field(default_factory=dict)
+    # Problemas de estrutura encontrados na leitura (colunas ausentes, IDs repetidos...).
+    avisos: list[str] = field(default_factory=list)
 
     def registro(self, id_registro: str) -> Registro:
         for r in self.registros:

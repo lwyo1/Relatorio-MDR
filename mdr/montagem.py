@@ -47,9 +47,10 @@ def campo(registro: Registro, chave: str) -> str:
 
 
 def periodo(registro: Registro, base: Base) -> str:
-    """Item 1.5: período cadastrado para a fase; nunca calculado."""
-    fase = como_texto(registro.get("fase_temporal")).strip()
-    return base.fases.get(fase) or NAO_PREENCHIDO
+    """Item 1.5: período cadastrado para Programa + Fase; nunca calculado."""
+    chave = tuple(como_texto(registro.get(k)).strip()
+                  for k in ("programa", "fase_temporal"))
+    return base.fases.get(chave) or NAO_PREENCHIDO
 
 
 def trajetoria(registro: Registro, base: Base) -> str:

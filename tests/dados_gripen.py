@@ -184,7 +184,7 @@ def base_gripen() -> Base:
         limitacoes=list(LIMITACOES),
         lacunas=list(LACUNAS),
         acoes=list(ACOES),
-        fases={FASE_2: "2015–2021"},
+        fases={(PROGRAMA, FASE_2): "2015–2021"},
         trajetorias={(PROGRAMA, FASE_2, FUNCAO):
                      "Engenharia de Manufatura: Nível 5 — Inovação Avançada, no "
                      "conjunto de evidências da fase."},
